@@ -1,13 +1,14 @@
 name: Timeout Example
 
-on:
-  workflow_dispatch:   # manual trigger for testing
-  push:
-
+on: [push]
+concurrency:
+  group: ${{ github.repository }}-${{ github.ref }}
+  #cancel-in-progress: false 
+  cancel-in-progress: true # it will cancel the running one, pickup new one
 jobs:
   timeout-job:
     runs-on: ubuntu-latest
-    # ⏱ Set job-level timeout to 5 minutes
+    # Set job-level timeout to 5 minutes
     timeout-minutes: 5
 
     steps:
