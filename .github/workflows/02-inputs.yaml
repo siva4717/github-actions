@@ -1,0 +1,53 @@
+name: Inputs demo
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Target environment (dev / test / prod)"
+        required: true
+        default: dev
+        type: environment
+
+      username:
+        description: "Your name"
+        required: true
+        default: "World"
+        type: string
+
+      enable_feature:
+        description: "Enable feature?"
+        required: false
+        default: false
+        type: boolean
+
+      debug_mode:
+        description: "Enable debug logs?"
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+
+    # 👇 This binds the job to a GitHub Environment
+    environment: ${{ inputs.environment }}
+
+    steps:
+      - name: Show inputs
+        run: |
+          echo "Environment     : ${{ inputs.environment }}"
+          echo "Username        : ${{ inputs.username }}"
+          echo "Feature enabled : ${{ inputs.enable_feature }}"
+          echo "Debug mode      : ${{ inputs.debug_mode }}"
+
+      - name: Feature logic
+        if: ${{ inputs.enable_feature == true }}
+        run: echo "🚀 Feature is ENABLED"
+
+      - name: Debug logic
+        if: ${{ inputs.debug_mode == true }}
+        run: |
+          echo "🔍 Debug information"
+          env
