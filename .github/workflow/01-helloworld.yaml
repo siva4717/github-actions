@@ -1,0 +1,14 @@
+name: Hello World #workflow name
+
+# on: #event
+#   push:
+#     branches: [main]
+
+on: [push] #any branch push
+
+jobs: #it contain multiple job names
+  hello: #job name
+    runs-on: ubuntu-latest #where to run
+    steps:
+      - name: Say hello
+        run: echo "Hello, world!"
