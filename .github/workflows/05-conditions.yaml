@@ -9,8 +9,8 @@ jobs:
       - name: Say hello
         run: echo "Hello, world!"
       - name: trigger the PROD
-        if: github.ref == 'ref/heads/main'
-        run: echo "Deploying the prod"
+        if: github.ref == 'refs/heads/main'
+        run: echo 'Deploying the prod'
       - name: trigger the DEV
-        if: github.ref == 'ref/heads/feature-*'
-        run: echo "Deploying the dev" 
+        if: github.ref == 'refs/heads/feature-*'
+        run: echo 'Deploying the dev'
