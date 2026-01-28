@@ -21,5 +21,5 @@ jobs:
       - name: Simulate long task
         run: |
           echo "Starting a long task..."
-          sleep 600   # 600 seconds = 10 minutes
+          sleep 600   # 600 seconds = 10 minutes s
           echo "Finished!"
