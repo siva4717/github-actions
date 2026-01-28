@@ -8,6 +8,9 @@ jobs:
     steps:
       - name: Say hello
         run: echo "Hello, world!"
-      - name: deploy the PROD
+      - name: trigger the PROD
         if: github.ref == 'ref/heads/main'
         run: echo "Deploying the prod"
+      - name: trigger the DEV
+        if: github.ref == 'ref/heads/feature-*'
+        run: echo "Deploying the dev" 
