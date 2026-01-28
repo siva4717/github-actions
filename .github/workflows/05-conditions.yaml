@@ -1,0 +1,13 @@
+name: conditions
+
+on: [push] 
+
+jobs: 
+  conditions-demo: 
+    runs-on: ubuntu-latest 
+    steps:
+      - name: Say hello
+        run: echo "Hello, world!"
+      - name: deploy the PROD
+        if: github.ref == 'ref/heads/main'
+        run: echo "Deploying the prod"
