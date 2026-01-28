@@ -31,7 +31,7 @@ jobs:
   demo:
     runs-on: ubuntu-latest
 
-    # 👇 This binds the job to a GitHub Environment
+    # This binds the job to a GitHub Environment
     environment: ${{ inputs.environment }}
 
     steps:
